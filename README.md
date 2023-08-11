@@ -98,7 +98,7 @@ defineEmits(['click']);
 import { createApp } from 'vue'
 import App from './app.vue'
 
-import MyKit from 'my-kit'
+import MyKit from 'ms-components'
 
 createApp(App).use(MyKit)
 
@@ -107,7 +107,7 @@ createApp(App).use(MyKit)
 也允许局部调用：
 
 ```js
-import { Button } from 'my-kit'
+import { Button } from 'ms-components'
 
 Vue.component('my-button', Button)
 ```
@@ -245,7 +245,7 @@ export default defineConfig({
 
 ```html
 <template>
-  <div class="my-kit-doc">
+  <div class="ms-components-doc">
     <aside>
       <router-link v-for="(link, index) in data.links" :key="index" :to="link.path">{{ link.name }}</router-link>
     </aside>
@@ -273,7 +273,7 @@ body {
   margin: 0;
   padding: 0;
 }
-.my-kit-doc {
+.ms-components-doc {
   display: flex;
   min-height: 100vh;
   aside {
@@ -611,7 +611,7 @@ run()
 接下来只要执行 `yarn gen` 就可以进入交互式终端，回答问题自动完成新建组件文件、修改配置的功能，并能够在可交互式文档中实时预览效果。
 
 ## 五、分开文档和库的构建逻辑
-在默认的 Vite 配置中，执行 `yarn build` 所构建出来的产物是“可交互式文档网站”，并非“组件库”本身。为了构建一个 `my-kit` 组件库并发布到 npm，我们需要将构建的逻辑分开。
+在默认的 Vite 配置中，执行 `yarn build` 所构建出来的产物是“可交互式文档网站”，并非“组件库”本身。为了构建一个 `ms-components` 组件库并发布到 npm，我们需要将构建的逻辑分开。
 
 在根目录下添加一个 `/build` 目录，依次写入 `base.js`，`lib.js` 和 `doc.js`，分别为基础配置、库配置和文档配置。
 
@@ -659,7 +659,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, '../packages/index.ts'),
       name: 'MYKit',
-      fileName: (format) => `my-kit.${format}.js`,
+      fileName: (format) => `ms-components.${format}.js`,
     },
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
@@ -718,8 +718,8 @@ copyDir('./packages', './docs');
 `build:lib` 的产物：
 ```bash
 dist
-├── my-kit.es.js
-├── my-kit.umd.js
+├── ms-components.es.js
+├── ms-components.umd.js
 ├── packages
 │   ├── Button
 │   │   ├── index.d.ts

@@ -1,5 +1,5 @@
 <template>
-  <div class="my-kit-doc">
+  <div class="ms-components-doc">
     <aside>
       <router-link v-for="(link, index) in data.links" :key="index" :to="link.path">{{ link.name }}</router-link>
     </aside>
@@ -27,7 +27,7 @@ body {
   margin: 0;
   padding: 0;
 }
-.my-kit-doc {
+.ms-components-doc {
   display: flex;
   min-height: 100vh;
   aside {

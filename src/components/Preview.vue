@@ -43,7 +43,7 @@ export default {
   },
   computed: {
     previewSourceCode() {
-      return this.sourceCode.replace(/'\.\.\/\.\.\/index'/g, `'@tencent/my-kit'`);
+      return this.sourceCode.replace(/'\.\.\/\.\.\/index'/g, `'@tencent/ms-components'`);
     },
   },
   async mounted() {
