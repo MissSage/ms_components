@@ -13,7 +13,7 @@ export default defineConfig({
     //   }
     // ])
   ],
-  // base: '/ms_components/',
+  base: '/ms_components/',
   build: {
     outDir: 'docs',
   },
