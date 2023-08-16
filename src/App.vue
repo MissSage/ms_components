@@ -29,7 +29,7 @@ body {
 }
 .ms-components-doc {
   display: flex;
-  min-height: 100vh;
+  min-height: 100%;
   aside {
     width: 200px;
     padding: 15px;

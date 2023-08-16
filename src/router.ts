@@ -6,7 +6,7 @@
  * 根据 /packages 目录下的组件所生成的组件类侧边导航栏配置，请勿手动修改
  */
 
- import { createRouter, createWebHashHistory, RouterOptions } from 'vue-router'
+ import { createRouter, createWebHashHistory, createWebHistory, RouterOptions } from 'vue-router'
 
  const routes = [{
     title: '按钮',
@@ -21,7 +21,7 @@
   }];
  
  const routerConfig = {
-   history: createWebHashHistory(),
+   history: createWebHistory(),
    routes,
    scrollBehavior(to: any, from: any) {
      if (to.path !== from.path) {
