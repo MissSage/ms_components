@@ -1,11 +1,9 @@
-import baseConfig from './base.config';
-import { defineConfig } from 'vite';
-import viteCopyPlugin from '@col0ring/vite-plugin-copy'
-import path from 'path'
+import baseConfig from "./base.config"
+import { defineConfig } from "vite"
 export default defineConfig({
   ...baseConfig,
   plugins: [
-    ...baseConfig.plugins||[],
+    ...(baseConfig.plugins || [])
     // viteCopyPlugin([
     //   {
     //     src: path.resolve(__dirname, '../packages'),
@@ -13,12 +11,12 @@ export default defineConfig({
     //   }
     // ])
   ],
-  base: '/ms_components/',
+  base: "/ms_components/",
   build: {
-    outDir: 'docs',
+    outDir: "docs"
   },
   preview: {
     port: 8087,
-    strictPort: true,
+    strictPort: true
   }
-});
+})

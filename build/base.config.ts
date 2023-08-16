@@ -6,7 +6,7 @@ import qiankun from "vite-plugin-qiankun"
 
 // 文档: https://vitejs.dev/config/
 export default defineConfig({
-  base: '/ms_components/',
+  // base: '/ms_components/',
   resolve: {
     alias: {
       '@': resolve(__dirname, '../src'),

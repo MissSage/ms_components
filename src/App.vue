@@ -1,7 +1,7 @@
 <template>
   <div class="ms-components-doc">
     <aside>
-      <router-link v-for="(link, index) in data.links" :key="index" :to="link.path">{{ link.name }}</router-link>
+      <router-link v-for="(link, index) in routes" :key="index" :to="link.path">{{ link.meta?.title }}</router-link>
     </aside>
     <main>
       <router-view></router-view>
@@ -10,15 +10,7 @@
 </template>
 
 <script setup>
-import ComponentList from 'packages/list.json';
-import { reactive } from 'vue'
-
-const data = reactive({
-  links: ComponentList.map(item => ({
-    path: `/components/${item.compName}`,
-    name: item.compZhName
-  }))
-})
+import {routes} from './router'
 </script>
 
 <style lang="scss">

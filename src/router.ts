@@ -1,35 +1,33 @@
-/* eslint-disable prettier/prettier */
-
-/** 
+import { qiankunWindow } from "vite-plugin-qiankun/dist/helper"
+import list from "../packages/list.json"
+/**
  * !--------- FBI WARNING ----------!
- * 
+ *
  * 根据 /packages 目录下的组件所生成的组件类侧边导航栏配置，请勿手动修改
  */
 
- import { createRouter, createWebHashHistory, createWebHistory, RouterOptions } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw, RouterOptions } from "vue-router"
+export const routes: RouteRecordRaw[] = list.map(item => {
+  return {
+    meta: {
+      title: item.compZhName
+    },
+    name: item.compName,
+    path: "/" + item.compName,
+    component: () => import(`../packages/${item.compName}/docs/README.md`)
+  }
+})
 
- const routes = [{
-    title: '按钮',
-    name: 'Button',
-    path: '/components/Button',
-    component: () => import('packages/Button/docs/README.md'),
-  },{
-    title: '地图',
-    name: 'ArcMap',
-    path: '/components/ArcMap',
-    component: () => import('packages/ArcMap/docs/README.md'),
-  }];
- 
- const routerConfig = {
-   history: createWebHistory(),
-   routes,
-   scrollBehavior(to: any, from: any) {
-     if (to.path !== from.path) {
-       return { top: 0 };
-     }
-   },
- };
- 
- const router = createRouter(routerConfig as RouterOptions);
- 
- export default router;
+const routerConfig = {
+  history: createWebHistory(qiankunWindow.__POWERED_BY_QIANKUN__ ? "/components" : "/"),
+  routes,
+  scrollBehavior(to: any, from: any) {
+    if (to.path !== from.path) {
+      return { top: 0 }
+    }
+  }
+}
+
+const router = createRouter(routerConfig as RouterOptions)
+
+export default router

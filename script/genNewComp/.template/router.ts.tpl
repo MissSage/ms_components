@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
 
 /** 
  * !--------- FBI WARNING ----------!
@@ -11,7 +11,7 @@
  const routes = [{{ routes }}];
  
  const routerConfig = {
-   history: createWebHashHistory(),
+   history: createWebHashHistory(qiankunWindow.__POWERED_BY_QIANKUN__ ? '/components' : '/'),
    routes,
    scrollBehavior(to: any, from: any) {
      if (to.path !== from.path) {
