@@ -1,5 +1,5 @@
 <template>
-  <div class="ms-preview">
+  <div class="ms_components-preview">
     <section>
       <slot></slot>
     </section>
@@ -9,100 +9,60 @@
     </div>
 
     <div class="preview-bottom">
-      <span class="preview-bottom-text" name="Code" @click="showSourceCode">{{codeVisible?'收起':'查看代码'}}</span>
+      <span name="Code" @click="showSourceCode">查看代码</span>
     </div>
   </div>
 </template>
 
 <script>
-import Prism from 'prismjs';
-import '../assets/prism.css';
+import Prism from "prismjs"
 
-const isDev = import.meta.env.MODE === 'development';
+const isDev = import.meta.env.MODE === "development"
 
 export default {
   props: {
     /** 组件名称 */
     compName: {
       type: String,
-      default: '',
-      require: true,
+      default: "",
+      require: true
     },
     /** 要显示代码的组件 */
     demoName: {
       type: String,
-      default: '',
-      require: true,
-    },
+      default: "",
+      require: true
+    }
   },
   data() {
     return {
-      sourceCode: '',
-      codeVisible: false,
-    };
+      sourceCode: "",
+      codeVisible: false
+    }
   },
   computed: {
     previewSourceCode() {
-      return this.sourceCode.replace(/'\.\.\/\.\.\/index'/g, `'@tencent/ms-components'`);
-    },
+      return this.sourceCode.replace(/'\.\.\/\.\.\/index'/g, `'@tencent/ms_components'`)
+    }
   },
   async mounted() {
     if (this.compName && this.demoName) {
       if (isDev) {
-        this.sourceCode = (
-          await import(/* @vite-ignore */ `../../packages/${this.compName}/docs/${this.demoName}.vue?raw`)
-        ).default;
+        this.sourceCode = (await import(/* @vite-ignore */ `../../packages/${this.compName}/docs/${this.demoName}.vue?raw`)).default
       } else {
-        this.sourceCode = await fetch(`${isDev ? '' : '/ms_components'}/packages/${this.compName}/docs/${this.demoName}.vue`).then((res) => res.text());
+        this.sourceCode = await fetch(`${isDev ? "" : "/ms_components"}/packages/${this.compName}/docs/${this.demoName}.vue`).then(res => res.text())
       }
     }
-    await this.$nextTick();
-    Prism.highlightAll();
+    await this.$nextTick()
+    Prism.highlightAll()
   },
   methods: {
     async copyCode() {
       // this.$copyText(this.sourceCode);
     },
     showSourceCode() {
-      this.codeVisible = !this.codeVisible;
-    },
-  },
-};
+      this.codeVisible = !this.codeVisible
+    }
+  }
+}
 </script>
-
-<style lang="scss">
-pre {
-  line-height: 0;
-}
-.ms-preview {
-  border: 4px;
-  border: 1px dashed #e7e7e7;
-  padding: 10px;
-  border-bottom: 1px dashed #e7e7e7;
-  section {
-    margin: 15px;
-  }
-}
-
-.source-code {
-  max-height: 500px;
-}
-.language-html {
-  margin: 0;
-  padding: 0 15px;
-}
-.preview-bottom {
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-top: 1px dashed #e7e7e7;
-}
-.preview-bottom-text{
-  &:hover{
-    text-decoration: underline;
-    color: #188ccf;
-  }
-  cursor: pointer;
-}
-</style>

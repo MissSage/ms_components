@@ -3,7 +3,7 @@ import {{ compName }} from './src/index.vue';
 
 export const {{ compName }}Plugin: Plugin = {
   install(app: App) {
-    app.component('ms-{{ compClassName }}', {{ compName }});
+    app.component('ms_{{ compClassName }}', {{ compName }});
   },
 };
 

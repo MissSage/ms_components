@@ -6,9 +6,39 @@
     "compClassName": "button"
   },
   {
-    "compName": "ArcMap",
-    "compZhName": "地图",
-    "compDesc": "arcgis基础组件",
-    "compClassName": "arc-map"
+    "compName": "Foo",
+    "compZhName": "测试组件",
+    "compDesc": "默认：这是一个新组件",
+    "compClassName": "foo"
+  },
+  {
+    "compName": "Input",
+    "compZhName": "输入框",
+    "compDesc": "一个简单的输入框",
+    "compClassName": "input"
+  },
+  {
+    "compName": "Checkbox",
+    "compZhName": "复选框",
+    "compDesc": "一个简单的复选框",
+    "compClassName": "checkbox"
+  },
+  {
+    "compName": "Select",
+    "compZhName": "下拉框",
+    "compDesc": "默认：这是一个新组件",
+    "compClassName": "select"
+  },
+  {
+    "compName": "Tag",
+    "compZhName": "标签",
+    "compDesc": "默认：这是一个新组件",
+    "compClassName": "tag"
+  },
+  {
+    "compName": "Tree",
+    "compZhName": "树组件",
+    "compDesc": "默认：这是一个新组件",
+    "compClassName": "tree"
   }
 ]

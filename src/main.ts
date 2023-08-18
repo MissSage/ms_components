@@ -1,11 +1,8 @@
-import { renderWithQiankun, qiankunWindow, QiankunProps } from "vite-plugin-qiankun/dist/helper"
 import { createApp } from "vue"
 import App from "./App.vue"
 import router from "./router"
-
-import "./assets/markdown.css"
-
-import MS from "../packages"
+import { renderWithQiankun, qiankunWindow, QiankunProps } from "vite-plugin-qiankun/dist/helper"
+import ms_components from "../packages"
 import Preview from "./components/Preview.vue"
 
 // app.mount('#app')
@@ -35,12 +32,10 @@ const initQianKun = () => {
 
 const render = (container: string | null) => {
   // 如果是在主应用的环境下就挂载主应用的节点，否则挂载到本地
-  const appDom = container ?? "#ms_subapp_components"
+  const appDom = container ?? "#ms_components_app_container"
   const app = createApp(App)
   app.component("Preview", Preview)
-  app.use(MS).use(router)
-
-  app.mount(appDom)
+  app.use(ms_components).use(router).mount(appDom)
 }
 // 判断是否为乾坤环境，否则会报错[qiankun]: Target container with #subAppContainerVue3 not existed while subAppVue3 mounting!
 qiankunWindow.__POWERED_BY_QIANKUN__ ? initQianKun() : render(null)

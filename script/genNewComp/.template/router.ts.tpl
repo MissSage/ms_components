@@ -1,4 +1,4 @@
-import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
+/* eslint-disable prettier/prettier */
 
 /** 
  * !--------- FBI WARNING ----------!
@@ -6,20 +6,26 @@ import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
  * 根据 /packages 目录下的组件所生成的组件类侧边导航栏配置，请勿手动修改
  */
 
- import { createRouter, createWebHashHistory, RouterOptions } from 'vue-router'
+import { qiankunWindow } from "vite-plugin-qiankun/dist/helper"
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router"
 
- const routes = [{{ routes }}];
- 
- const routerConfig = {
-   history: createWebHashHistory(qiankunWindow.__POWERED_BY_QIANKUN__ ? '/components' : '/'),
-   routes,
-   scrollBehavior(to: any, from: any) {
-     if (to.path !== from.path) {
-       return { top: 0 };
-     }
-   },
- };
- 
- const router = createRouter(routerConfig as RouterOptions);
- 
- export default router;
+export const routes = [
+  {
+    meta: {
+      title: "组件库"
+    },
+    name: "ms_components",
+    path: "/",
+    component: () => import("@/components/Layout.vue"),
+    children: [
+      {{ routes }}
+    ]
+  }
+];
+
+const router = createRouter({
+  history: createWebHistory(qiankunWindow.__POWERED_BY_QIANKUN__ ? "/components" : "/"),
+  routes
+})
+
+export default router

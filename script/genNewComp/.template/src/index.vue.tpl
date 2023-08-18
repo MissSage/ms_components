@@ -1,5 +1,5 @@
 <template>
-  <div class="ms-{{ compClassName }}">
+  <div class="ms_{{ compClassName }}">
     我是{{ compZhName }}组件
   </div>
 </template>
@@ -9,7 +9,7 @@
 </script>
 
 <style scoped>
-.ms-{{ compClassName }} {
+.ms_{{ compClassName }} {
   
 }
 </style>

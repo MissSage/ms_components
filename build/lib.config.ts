@@ -6,11 +6,11 @@ import dts from 'vite-plugin-dts';
 export default defineConfig({
   ...baseConfig,
   build: {
-    outDir: 'lib',
+    outDir: 'dist',
     lib: {
       entry: resolve(__dirname, '../packages/index.ts'),
-      name: 'ms_gis',
-      fileName: (format) => `ms_gis.${format}.js`,
+      name: 'ms_components',
+      fileName: (format) => `ms_components.${format}.js`,
     },
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖

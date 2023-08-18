@@ -8,16 +8,31 @@
 import { App, Plugin } from 'vue';
 
 import { ButtonPlugin } from './Button';
-import { ArcMapPlugin } from './ArcMap';
+import { FooPlugin } from './Foo';
+import { InputPlugin } from './Input';
+import { CheckboxPlugin } from './Checkbox';
+import { SelectPlugin } from './Select';
+import { TagPlugin } from './Tag';
+import { TreePlugin } from './Tree';
 
-const ms_components: Plugin = {
+const ms_componentsPlugin: Plugin = {
   install(app: App) {
     ButtonPlugin.install?.(app);
-    ArcMapPlugin.install?.(app);
+    FooPlugin.install?.(app);
+    InputPlugin.install?.(app);
+    CheckboxPlugin.install?.(app);
+    SelectPlugin.install?.(app);
+    TagPlugin.install?.(app);
+    TreePlugin.install?.(app);
   },
 };
 
-export default ms_components;
+export default ms_componentsPlugin;
 
 export * from './Button'
-export * from './ArcMap'
+export * from './Foo'
+export * from './Input'
+export * from './Checkbox'
+export * from './Select'
+export * from './Tag'
+export * from './Tree'

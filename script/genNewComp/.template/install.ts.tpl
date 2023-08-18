@@ -9,12 +9,12 @@ import { App, Plugin } from 'vue';
 
 {{ importPlugins }}
 
-const MSPlugin: Plugin = {
+const ms_componentsPlugin: Plugin = {
   install(app: App) {
     {{ installPlugins }}
   },
 };
 
-export default MSPlugin;
+export default ms_componentsPlugin;
 
 {{ exportPlugins }}
