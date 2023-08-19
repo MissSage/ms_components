@@ -16,14 +16,10 @@ import { routes } from "../router"
 </script>
 
 <style lang="less">
-@import url("@/assets/markdown.css");
-@import url("@/assets/prism.css");
+@import url("@/assets/markdown.less");
+@import url("@/assets/prism.less");
 @import url('../../dist/style.css');
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
+
 .ms_components-doc {
   display: flex;
   min-height: 100vh;
